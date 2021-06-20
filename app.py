@@ -5,27 +5,27 @@ app = Flask(__name__)
 
 df = pd.read_csv('./static/people.csv')
 
-class User(db.Model):
-    # 表名
-    __tablename__ = 'users'
+# class User(db.Model):
+#     # 表名
+#     __tablename__ = 'users'
 
-    # 字段
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(32), unique=True)
-    state = db.Column(db.String(32))
-    salary = db.Column(db.String(32))
-    grade = db.Column(db.String(32))
-    room = db.Column(db.String(32))
-    telnum = db.Column(db.String(32))
-    picture = db.Column(db.String(32))
-    keywords = db.Column(db.String(300))
+#     # 字段
+#     id = db.Column(db.Integer, primary_key=True)
+#     name = db.Column(db.String(32), unique=True)
+#     state = db.Column(db.String(32))
+#     salary = db.Column(db.String(32))
+#     grade = db.Column(db.String(32))
+#     room = db.Column(db.String(32))
+#     telnum = db.Column(db.String(32))
+#     picture = db.Column(db.String(32))
+#     keywords = db.Column(db.String(300))
 
-    def save(self):
-        db.session.add(self)
-        db.session.commit()
+#     def save(self):
+#         db.session.add(self)
+#         db.session.commit()
 
         
-        @app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def index():
     # 创建自定义的表单类
     # author_form = AuthorForm()
@@ -40,11 +40,11 @@ def index():
     6. 验证不通过就提示错误
     '''
     # 查询所有的作者信息, 让信息传递给模板
-    people = User.query.all()
+#     people = User.query.all()
 #     form = peopleForm()
 #     form2 = UpForm()
 #     print(form.data)
-    return render_template('idx.html', people=people,df=df)
+    return render_template('idx.html', df=df)
 
 
 # @app.route("/")
